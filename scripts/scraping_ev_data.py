@@ -45,20 +45,19 @@ for car in cars:
     price_uk = pricingorg.find('span', class_='country_uk').text
     
     car_list.append({
-        "Brand": brand,
-        "Model": model,
-        "Range_km": range.split(' ', 1)[0],
-        "Efficiency_Wh/km": efficiency.split(' ', 1)[0],
-        "Battery_kWh": battery,
-        "Fastcharge Speed_kW": fastcharge,
-        "Price/Range_€/km": pricerange,
-        "Price in German_€": price_de.replace("€", "").replace(",", ""),
-        "Price in Netherlands_€": price_nl.replace("€", "").replace(",", ""),
-        "Price in UK_£": price_uk.replace("£", "").replace(",", "")
-    
+        'Brand': brand,
+        'Model': model,
+        'Range_km': range.split(' ', 1)[0],
+        'Efficiency_Wh/km': efficiency.split(' ', 1)[0],
+        'Battery_kWh': battery,
+        'Fastcharge Speed_kW': fastcharge,
+        'Price/Range_€/km': pricerange,
+        'Price in German_€': price_de.replace('€', '').replace(',', '').replace('*', ''),
+        'Price in Netherlands_€': price_nl.replace('€', '').replace(',', '').replace('*', ''),
+        'Price in UK_£': price_uk.replace('£', '').replace(',', '').replace('*', '')
     })
 
 df = pd.DataFrame(car_list)
-df.to_csv("ev_raw_data.csv", index=False)
+df.to_csv('ev_raw_data.csv', index=False)
 
-print(f"Finished scraping, and extracted {len(df)} cars")
+print(f'Finished scraping, and extracted {len(df)} cars')
