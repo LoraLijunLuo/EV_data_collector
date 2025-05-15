@@ -45,6 +45,7 @@ for car in cars:
     price_uk = pricingorg.find('span', class_='country_uk').text
     
     car_list.append({
+        'name': name,
         'Brand': brand,
         'Model': model,
         'Range_km': range.split(' ', 1)[0],
@@ -58,6 +59,6 @@ for car in cars:
     })
 
 df = pd.DataFrame(car_list)
-df.to_csv('ev_raw_data.csv', index=False)
+df.to_csv('data/ev_raw_data.csv', index=False)
 
 print(f'Finished scraping, and extracted {len(df)} cars')
